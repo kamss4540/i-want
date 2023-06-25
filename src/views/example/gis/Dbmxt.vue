@@ -16,6 +16,9 @@ onMounted(() => {
 	console.log("onMounted=>", map);
 	map2d = new MapEngine();
 	map2d.init(map.value as HTMLElement);
+	map2d.map.on('click', e => {
+		console.log('e=>', e.coordinate)
+	})
 	console.log('map2d=>', map2d)
 });
 </script>
