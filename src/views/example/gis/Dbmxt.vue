@@ -1,16 +1,33 @@
 <template>
-    <div>
-        <h3>等边面线图</h3>
-        <div :ref="map" />
-    </div>
+	<div class="box">
+		<h3>等边面线图</h3>
+		<div ref="map" class="mapContariner" />
+	</div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-const map = ref()
-console.log('map=>', map)
+import { ref, onMounted, type Ref } from "vue";
+import MapEngine from "@/utils/mapEngine";
+
+const map = ref<HTMLElement>();
+let map2d = null;
+
+onMounted(() => {
+	console.log("onMounted=>", map);
+	map2d = new MapEngine();
+	map2d.init(map.value as HTMLElement);
+});
 </script>
 
-<style>
+<style scoped lang="scss">
+.box {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 
+	.mapContariner {
+		width: 100%;
+		height: 100%;
+	}
+}
 </style>
