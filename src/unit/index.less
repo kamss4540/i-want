@@ -1,0 +1,42 @@
+.tabContainer {
+	:global {
+		.ant-radio-button-wrapper {
+			width: 140px;
+			height: 30px;
+			color: #fff !important;
+			text-align: center;
+			border: none;
+			background-image: url("/iocoss/datai/custom/1671077284941983744/images/Group 16.png");
+			background-repeat: no-repeat !important;
+			background-size: cover !important;
+			background-color: rgba(0, 0, 0, 0) !important;
+
+			&:first-child {
+				border: none;
+			}
+
+			&:not(:first-child):before {
+				display: none;
+			}
+
+			&:hover {
+				color: #fff;
+			}
+		}
+
+		.ant-radio-button-wrapper-checked {
+			background-image: url("/iocoss/datai/custom/1671077284941983744/images/Group 13.png") !important;
+			border: none;
+
+			&:not(.ant-radio-button-wrapper-disabled) {
+				&:focus-within {
+					box-shadow: none;
+				}
+
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
