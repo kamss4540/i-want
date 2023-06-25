@@ -1,26 +1,13 @@
 <template>
-	<router-view v-slot="{ Component }">
-		<!-- <transition :name="transitionName"> -->
-			<component :is="Component" />
-		<!-- </transition> -->
-	</router-view>
+    <div>
+        npm
+    </div>
 </template>
 
-<script lang="ts" >
-import { reactive, toRefs } from "vue";
-// import { useRouter } from "vue-router";
-export default {
-	setup() {
-		const state = reactive({
-			transitionName: "slide-left",
-		});
-	
+<script setup lang="ts">
 
-		return {
-			...toRefs(state),
-		};
-	},
-};
 </script>
 
-<style lang="less" scoped></style>
+<style>
+
+</style>
