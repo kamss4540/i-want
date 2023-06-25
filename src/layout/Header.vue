@@ -6,7 +6,7 @@
 		:ellipsis="false"
 		@select="handleSelect"
 	>
-		<el-menu-item index="0">LOGO</el-menu-item>
+		<el-menu-item index="0" @click="onLogoClick" >LOGO</el-menu-item>
 		<div class="flex-grow" />
 		<el-menu-item index="1">Processing Center</el-menu-item>
 		<el-sub-menu index="2">
@@ -26,11 +26,15 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const activeIndex = ref("1");
 const handleSelect = (key: string, keyPath: string[]) => {
 	console.log(key, keyPath);
 };
+const onLogoClick = () => {
+	router.push('/example/dbmxt')
+}
 </script>
 
 <style>
