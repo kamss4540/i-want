@@ -16,7 +16,7 @@ onMounted(() => {
 	console.log("onMounted=>", map);
 	map2d = new MapEngine();
 	map2d.init(map.value as HTMLElement);
-	map2d.instance.on("singleclick", (e) => {
+	map2d.instance.on("click", (e) => {
 		console.log("coordinate=>", e.coordinate);
 		const _layer = map2d.Piont(e.coordinate)
 		map2d.instance.addLayer(_layer)
