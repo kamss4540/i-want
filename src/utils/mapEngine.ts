@@ -1,23 +1,25 @@
-import Map from "ol/Map";
-import View from "ol/View";
-import TileLayer from "ol/layer/Tile";
-import OSM from "ol/source/OSM";
-import XYZ from "ol/source/XYZ";
-import 'ol/ol.css'
+import { XYZ,  } from "ol/source";
+import "ol/ol.css";
+import { Map, View, Feature } from "ol";
+import { Tile, Vector } from "ol/layer";
+import { Style, Icon } from "ol/style";
+import { Point } from "ol/geom";
+import logo from "@/assets/积水点预警.png";
+import type { Coordinate } from "ol/coordinate";
 
 class MapEngine {
-	map!: Map;
+	instance!: Map;
 	keys: [string] = ["b5c3072e0fbc6e75d36e49daab21dc92"];
 
 	init(el: HTMLElement) {
 		// 默认加载天地图底图
-		let defaultLayer = new TileLayer({
+		let defaultLayer = new Tile({
 			source: new XYZ({
 				url: "http://t4.tianditu.com/DataServer?T=vec_w&tk=b5c3072e0fbc6e75d36e49daab21dc92&x={x}&y={y}&l={z}",
 			}),
 		});
 		// 默认加载天地图标注
-		var defaultMark = new TileLayer({
+		var defaultMark = new Tile({
 			source: new XYZ({
 				url: "http://t4.tianditu.com/DataServer?T=cva_w&tk=b5c3072e0fbc6e75d36e49daab21dc92&x={x}&y={y}&l={z}",
 			}),
@@ -33,8 +35,26 @@ class MapEngine {
 			}),
 			layers: [defaultLayer, defaultMark],
 		});
-		this.map = _map;
+		this.instance = _map;
 	}
+
+	Piont(coordinate: Coordinate) {
+		let iconStyle = new Style({
+			image: new Icon({
+				src: logo,
+				size: [32, 32],
+				anchor: [0.5, 1],
+			}),
+		});
+		let feature = new Feature({
+			geometry: new Point(coordinate),
+			name: "point",
+		});
+
+	
+	}
+
+
 }
 
 export default MapEngine;

@@ -10,16 +10,16 @@ import { ref, onMounted, type Ref } from "vue";
 import MapEngine from "@/utils/mapEngine";
 
 const map = ref<HTMLElement>();
-let map2d = null;
+let map2d: MapEngine;
 
 onMounted(() => {
 	console.log("onMounted=>", map);
 	map2d = new MapEngine();
 	map2d.init(map.value as HTMLElement);
-	map2d.map.on('click', e => {
-		console.log('e=>', e.coordinate)
-	})
-	console.log('map2d=>', map2d)
+	map2d.instance.on("singleclick", (e) => {
+		console.log("coordinate=>", e.coordinate);
+	});
+	console.log("map2d=>", map2d);
 });
 </script>
 
