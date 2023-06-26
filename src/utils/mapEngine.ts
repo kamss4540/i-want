@@ -1,11 +1,13 @@
-import { XYZ,  } from "ol/source";
+import { XYZ } from "ol/source";
 import "ol/ol.css";
 import { Map, View, Feature } from "ol";
-import { Tile, Vector } from "ol/layer";
+import { Tile } from "ol/layer";
 import { Style, Icon } from "ol/style";
 import { Point } from "ol/geom";
 import logo from "@/assets/积水点预警.png";
 import type { Coordinate } from "ol/coordinate";
+import VectorSource from "ol/source/Vector";
+import VectorLayer from "ol/layer/Vector";
 
 class MapEngine {
 	instance!: Map;
@@ -50,11 +52,14 @@ class MapEngine {
 			geometry: new Point(coordinate),
 			name: "point",
 		});
-
-	
+		feature.setStyle(iconStyle);
+		let vectorlayer = new VectorLayer({
+			source: new VectorSource({
+				features: [feature],
+			}),
+		});
+		return vectorlayer
 	}
-
-
 }
 
 export default MapEngine;

@@ -18,6 +18,8 @@ onMounted(() => {
 	map2d.init(map.value as HTMLElement);
 	map2d.instance.on("singleclick", (e) => {
 		console.log("coordinate=>", e.coordinate);
+		const _layer = map2d.Piont(e.coordinate)
+		map2d.instance.addLayer(_layer)
 	});
 	console.log("map2d=>", map2d);
 });
