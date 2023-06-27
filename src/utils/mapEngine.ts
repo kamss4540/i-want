@@ -44,8 +44,8 @@ class MapEngine {
 		let iconStyle = new Style({
 			image: new Icon({
 				src: logo,
-				size: [32, 32],
-				anchor: [0.5, 1],
+				size: [50, 56],
+				anchor: [0.5, 45 / 56],
 			}),
 		});
 		let feature = new Feature({
@@ -58,7 +58,7 @@ class MapEngine {
 				features: [feature],
 			}),
 		});
-		return vectorlayer
+		return vectorlayer;
 	}
 }
 
