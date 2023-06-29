@@ -1,10 +1,23 @@
 <template>
 	<el-menu
-		default-active="2"
-		class="el-menu-vertical-demo"
 		@open="handleOpen"
 		@close="handleClose"
+		v-on:select="handleSelect"
 	>
+		<template v-for="sub in menus">
+			<el-sub-menu :index="sub.path">
+				<template #title>
+					<el-icon><location /></el-icon>
+					<span>{{ sub.title }}</span>
+				</template>
+				<template v-for="item in sub.children">
+					<el-menu-item :index="item.path">
+						{{ item.title }}
+					</el-menu-item>
+				</template>
+			</el-sub-menu>
+		</template>
+
 		<el-sub-menu index="1">
 			<template #title>
 				<el-icon><location /></el-icon>
@@ -44,10 +57,23 @@ import {
 	Location,
 	Setting,
 } from "@element-plus/icons-vue";
+import router, { routes } from "@/router";
+import { ref } from "vue";
+const menus = ref();
+menus.value = routes[0].children.find(
+	(item) => item.name === "example"
+)?.children;
+console.log("menus=>", menus);
+
 const handleOpen = (key: string, keyPath: string[]) => {
 	console.log(key, keyPath);
 };
 const handleClose = (key: string, keyPath: string[]) => {
 	console.log(key, keyPath);
+};
+
+const handleSelect = (key: string, keyPath: string[]) => {
+	console.log("handleSelect=>", key, keyPath);
+	router.push(key);
 };
 </script>

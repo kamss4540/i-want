@@ -33,7 +33,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
 	console.log(key, keyPath);
 };
 const onLogoClick = () => {
-	router.push('/example/dbmxt')
+	router.push('/example/gis/dbmxt')
 }
 </script>
 
